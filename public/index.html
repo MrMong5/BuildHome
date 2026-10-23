@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173a35">
+  <meta name="description" content="Дома и готовые объекты недвижимости в Кызыле и Республике Тыва. Подбор, просмотр и размещение объектов.">
+  <title>ТуваДом — дома в Кызыле и Республике Тыва</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <div class="topline"><div class="container topline-inner"><span><span class="topline-dot"></span> Недвижимость в Республике Тыва</span><span>Кызыл · Дома и участки</span></div></div>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="/" aria-label="ТуваДом — главная">
+        <span class="brand-mark"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M4 20.5 21 6l17 14.5v17H25V26H17v11.5H4z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M12 14 21 6l9 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span>
+        <span class="brand-copy"><strong>Тува<span>Дом</span></strong><small>ДОМА И УЧАСТКИ</small></span>
+      </a>
+      <nav class="main-nav" aria-label="Основная навигация">
+        <a href="#catalog">Каталог</a>
+        <a href="#approach">Как работаем</a>
+        <a href="#about">О нас</a>
+      </nav>
+      <div class="header-actions">
+        <button class="header-phone" type="button" data-open-lead><span class="phone-symbol">↗</span><span><b>Обсудить покупку</b><small>Оставить заявку</small></span></button>
+        <a class="staff-link" href="/admin.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 8a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg><span>Для сотрудников</span></a>
+      </div>
+      <button class="mobile-menu" type="button" aria-label="Открыть меню" id="mobileMenuButton">☰</button>
+    </div>
+    <div class="mobile-nav" id="mobileNav"><a href="#catalog">Каталог</a><a href="#approach">Как работаем</a><a href="#about">О нас</a><a href="/admin.html">Для сотрудников</a></div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-image" role="img" aria-label="Современный загородный дом"></div>
+      <div class="hero-shade"></div>
+      <div class="container hero-content">
+        <div class="hero-copy">
+          <div class="eyebrow eyebrow-light"><span></span> РЕСПУБЛИКА ТЫВА · КЫЗЫЛ</div>
+          <h1>Дом — это больше,<br><em>чем стены.</em></h1>
+          <p>Помогаем найти место, где будет уютно жить. Готовые дома, новые постройки и объекты от собственников.</p>
+          <div class="hero-buttons"><a href="#catalog" class="button button-primary">Смотреть дома <span>↘</span></a><button class="button button-glass" type="button" data-open-lead>Подобрать под мой запрос</button></div>
+          <div class="hero-proof"><div class="proof-avatars"><span>Т</span><span>Д</span><span>+</span></div><div><strong>От первого вопроса до просмотра</strong><small>На связи по каждому объекту</small></div></div>
+        </div>
+        <div class="hero-card">
+          <div class="hero-card-top"><span>ВАШ СЛЕДУЮЩИЙ АДРЕС</span><span class="hero-card-icon">⌂</span></div>
+          <div class="hero-card-number">01<span> / 03</span></div>
+          <h2>Готовый дом.<br>Понятные условия.</h2>
+          <p>Характеристики, коммуникации и расположение — в одной карточке.</p>
+          <a href="#catalog" class="hero-card-link">Выбрать объект <span>↗</span></a>
+          <div class="hero-card-line"><span></span></div>
+        </div>
+        <div class="hero-bottom-label"><span class="hero-bottom-line"></span><span>НАЙДИТЕ СВОЁ МЕСТО</span></div>
+      </div>
+    </section>
+
+    <section class="search-section" aria-label="Поиск домов">
+      <div class="container">
+        <div class="search-panel">
+          <div class="search-heading"><div><span class="mini-overline">КАТАЛОГ НЕДВИЖИМОСТИ</span><h2>Какой дом вы ищете?</h2></div><span class="search-count" id="searchCount">Загружаем объекты…</span></div>
+          <form id="filterForm" class="filter-grid">
+            <label class="filter-field"><span>Цена, от</span><div class="field-with-suffix"><input type="number" id="priceMin" min="0" placeholder="Любая"><span>₽</span></div></label>
+            <label class="filter-field"><span>Цена, до</span><div class="field-with-suffix"><input type="number" id="priceMax" min="0" placeholder="Не ограничена"><span>₽</span></div></label>
+            <label class="filter-field"><span>Площадь дома от</span><div class="field-with-suffix"><input type="number" id="areaMin" min="0" placeholder="Любая"><span>м²</span></div></label>
+            <label class="filter-field"><span>Материал стен</span><select id="materialFilter"><option value="">Любой материал</option><option>Газобетон</option><option>Кирпич</option><option>Брус</option><option>Каркасный</option><option>Бревно</option><option>Другое</option></select></label>
+            <button class="button button-dark filter-submit" type="submit"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.8" cy="10.8" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.2 4.2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Найти дом</button>
+            <button class="filter-reset" type="button" id="resetFilters">Сбросить фильтры</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <section class="catalog-section section-space" id="catalog">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="mini-overline">ПОДБОРКА ОБЪЕКТОВ</span><h2>Дома, которые <em>стоят посмотреть</em></h2><p>Смотрите характеристики, знакомьтесь с описанием и выбирайте время для просмотра.</p></div>
+          <div class="catalog-tools"><button id="favoritesFilter" class="outline-button" type="button"><span>♡</span> Избранное <b id="favoritesCount">0</b></button><label class="sort-select"><span class="sr-only">Сортировка</span><select id="sortSelect"><option value="newest">Сначала новые</option><option value="priceAsc">Сначала дешевле</option><option value="priceDesc">Сначала дороже</option><option value="areaDesc">Больше площадь</option></select></label></div>
+        </div>
+        <div class="demo-note" id="demoNote"><span>i</span><p><b>Демонстрационные карточки.</b> Примеры показывают, как будут выглядеть объявления. Перед запуском замените их в панели сотрудников на реальные объекты и фотографии.</p></div>
+        <div class="listing-grid" id="listingGrid" aria-live="polite"><div class="loading-card">Подготавливаем каталог…</div></div>
+        <div class="empty-state hidden" id="emptyState"><div class="empty-icon">⌂</div><h3>Под эти параметры пока нет домов</h3><p>Попробуйте изменить фильтры или посмотреть все объекты.</p><button class="button button-dark" type="button" id="emptyReset">Показать все дома</button></div>
+        <div class="catalog-foot"><span id="catalogFootCount">Объекты в каталоге</span><button class="text-button" type="button" data-open-lead>Не нашли подходящий? Напишите нам <span>↗</span></button></div>
+      </div>
+    </section>
+
+    <section class="approach-section section-space" id="approach">
+      <div class="container approach-layout">
+        <div class="approach-image-wrap"><img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?auto=format&fit=crop&w=1400&q=85" alt="Светлая гостиная в современном доме" loading="lazy"><div class="image-caption"><span>01</span><div><strong>Сначала — ваши задачи</strong><small>Затем подходящие варианты</small></div></div><div class="image-stamp">ТЫВА<br>ДОМ</div></div>
+        <div class="approach-copy"><span class="mini-overline">ПРОСТО И ПОНЯТНО</span><h2>Недвижимость без лишней <em>неопределённости.</em></h2><p class="approach-lead">При выборе дома важны не только стены и цена. Мы собираем в карточке основные характеристики, коммуникации и ориентир на карте — чтобы вы могли заранее понять, подходит ли объект.</p>
+          <div class="approach-steps"><div class="approach-step"><span>01</span><div><h3>Выбираете объект</h3><p>Сравнивайте площадь, материал, этажность, участок и цену.</p></div></div><div class="approach-step"><span>02</span><div><h3>Уточняем детали</h3><p>Обсуждаем коммуникации, состояние дома и ваши вопросы.</p></div></div><div class="approach-step"><span>03</span><div><h3>Договариваемся о просмотре</h3><p>Связываемся с ответственным по объекту и согласуем время.</p></div></div></div>
+          <button class="button button-dark" type="button" data-open-lead>Обсудить покупку <span>↗</span></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="owners-section" id="about"><div class="container owners-layout"><div class="owners-copy"><span class="mini-overline mini-overline-light">ДЛЯ ВЛАДЕЛЬЦЕВ И ПАРТНЁРОВ</span><h2>Есть дом на продажу?<br><em>Разместим его в каталоге.</em></h2><p>В каталоге могут быть и объекты нашей бригады, и предложения партнёров. Подготовьте фотографии, характеристики и описание — сотрудник добавит объявление в панель управления.</p><a href="/admin.html" class="button button-light">Перейти в панель сотрудников <span>↗</span></a></div><div class="owners-art"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="owners-house"><svg viewBox="0 0 260 240" aria-hidden="true"><path d="M28 104 130 22l102 82v112H28z" fill="#f5efe5"/><path d="M15 107 130 14l115 93" stroke="#d8a26d" stroke-width="10" fill="none" stroke-linecap="round" stroke-linejoin="round"/><path d="M105 216v-65h51v65" fill="#d3a16d"/><path d="M51 126h42v42H51zM166 126h42v42h-42z" fill="#89a9a0"/><path d="M130 21v62" stroke="#173a35" stroke-width="4" stroke-linecap="round"/></svg></div><div class="floating-note floating-note-top"><span>⌂</span><div><b>Свои объекты</b><small>и предложения партнёров</small></div></div><div class="floating-note floating-note-bottom"><span>＋</span><div><b>Одна карточка</b><small>вся важная информация</small></div></div></div></div></section>
+
+    <section class="final-cta"><div class="container final-cta-inner"><div><span class="mini-overline">ВАШ СЛЕДУЮЩИЙ ШАГ</span><h2>Начнём с разговора?</h2><p>Расскажите, какой дом ищете — поможем сориентироваться по объектам.</p></div><button class="button button-primary" type="button" data-open-lead>Оставить заявку <span>↗</span></button></div></section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-main"><a class="brand brand-footer" href="/"><span class="brand-mark"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M4 20.5 21 6l17 14.5v17H25V26H17v11.5H4z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M12 14 21 6l9 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span><span class="brand-copy"><strong>Тува<span>Дом</span></strong><small>ДОМА И УЧАСТКИ</small></span></a><p>Каталог домов и объектов недвижимости в Кызыле и Республике Тыва.</p><div class="footer-links"><a href="#catalog">Каталог</a><a href="#approach">Как работаем</a><a href="/admin.html">Для сотрудников</a></div></div><div class="container footer-bottom"><span>© <span id="currentYear">2026</span> ТуваДом</span><span>Информация в объявлениях уточняется у ответственного по объекту.</span><span>Кызыл, Республика Тыва</span></div></footer>
+
+  <div class="modal-backdrop hidden" id="listingModal" role="dialog" aria-modal="true" aria-labelledby="detailTitle"><div class="modal modal-wide"><button class="modal-close" type="button" data-close-modal aria-label="Закрыть">×</button><div id="listingModalBody"></div></div></div>
+
+  <div class="modal-backdrop hidden" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="leadTitle"><div class="modal lead-modal"><button class="modal-close" type="button" data-close-modal aria-label="Закрыть">×</button><div class="lead-modal-side"><span class="mini-overline mini-overline-light">ТУВАДОМ</span><h2>Давайте подберём <em>ваш дом.</em></h2><p>Оставьте контакт — заявка попадёт сотрудникам, и они смогут связаться с вами.</p><div class="lead-side-mark">↗</div></div><div class="lead-modal-form"><span class="mini-overline">ЗАЯВКА</span><h2 id="leadTitle">Связаться с нами</h2><p class="form-intro" id="leadIntro">Расскажите немного о том, что вам нужно.</p><form id="leadForm"><input type="hidden" id="leadObjectId" name="objectId"><input type="hidden" id="leadObjectTitle" name="objectTitle"><label class="form-label">Как к вам обращаться<input name="name" required minlength="2" placeholder="Ваше имя" autocomplete="name"></label><label class="form-label">Контактный телефон<input name="phone" required minlength="5" placeholder="+7 …" autocomplete="tel"></label><label class="form-label">Комментарий <span class="optional">необязательно</span><textarea name="message" rows="3" placeholder="Например, хочу посмотреть дом в выходные"></textarea></label><button class="button button-dark button-full" type="submit">Отправить заявку <span>↗</span></button><p class="form-privacy">Отправляя форму, вы соглашаетесь на обработку данных для ответа на обращение.</p><div class="form-message hidden" id="leadMessage"></div></form></div></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="/app.js" defer></script>
+</body>
+</html>

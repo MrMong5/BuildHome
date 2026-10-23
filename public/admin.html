@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#173a35">
+  <title>Панель сотрудников — ТуваДом</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body class="admin-body">
+  <header class="admin-topbar"><div class="container admin-topbar-inner">
+    <a class="brand" href="/"><span class="brand-mark"><svg viewBox="0 0 42 42" aria-hidden="true"><path d="M4 20.5 21 6l17 14.5v17H25V26H17v11.5H4z" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M12 14 21 6l9 8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg></span><span class="brand-copy"><strong>Тува<span>Дом</span></strong><small>ДОМА И УЧАСТКИ</small></span></a>
+    <div class="admin-page-title"><div><strong>Панель сотрудников</strong><small>Управление объектами и заявками</small></div></div>
+    <a href="/" class="admin-back">← На сайт</a><button id="logoutButton" class="admin-signout hidden" type="button">Выйти</button>
+  </div></header>
+
+  <main class="admin-main">
+    <section class="admin-login-card" id="loginCard">
+      <span class="mini-overline">РАБОЧЕЕ ПРОСТРАНСТВО</span><h1>Вход для сотрудников</h1><p>Войдите, чтобы добавлять объекты, менять характеристики и обрабатывать заявки с сайта.</p>
+      <form id="loginForm"><label class="admin-field">Логин<input name="username" autocomplete="username" required placeholder="Логин сотрудника"></label><label class="admin-field">Пароль<input type="password" name="password" autocomplete="current-password" required placeholder="Ваш пароль"></label><button class="button button-dark button-full" type="submit">Войти в панель <span>↗</span></button><p class="admin-error hidden" id="loginError"></p></form>
+      <p style="font-size:11px;margin:18px 0 0">Учётную запись администратора создаёт сервер при первом запуске. Данные для входа задаются в файле <code>.env</code>.</p>
+    </section>
+
+    <section class="admin-dashboard" id="dashboard">
+      <div class="admin-welcome"><div><span class="mini-overline">РАБОЧЕЕ ПРОСТРАНСТВО</span><h1>Здравствуйте, <span id="welcomeName">сотрудник</span>.</h1><p>Здесь можно управлять каталогом и следить за обращениями покупателей.</p></div><div class="admin-welcome-actions"><button class="button button-dark" type="button" id="newListingButton">＋ Добавить объект</button></div></div>
+      <div class="admin-stats"><div class="admin-stat"><small>Все объекты</small><strong id="statAll">0</strong></div><div class="admin-stat"><small>Опубликовано</small><strong id="statPublished">0</strong></div><div class="admin-stat"><small>Новые заявки</small><strong id="statLeads">0</strong></div></div>
+      <div class="admin-note">Первые карточки в каталоге помечены как демонстрационные. Удалите их или замените реальными данными перед публикацией сайта для покупателей.</div>
+      <div class="admin-tabs" role="tablist"><button class="admin-tab active" type="button" data-tab="objects">Объекты</button><button class="admin-tab" type="button" data-tab="leads">Заявки <span id="newLeadBadge"></span></button><button class="admin-tab" type="button" data-tab="staff" id="staffTabButton">Сотрудники</button></div>
+      <section class="admin-panel active" id="panel-objects"><div class="admin-panel-heading"><div><h2>Объекты недвижимости</h2><p>Создавайте карточки, указывайте коммуникации и точку на карте.</p></div><button class="outline-button" type="button" id="refreshButton">↻ Обновить</button></div><div class="admin-listings" id="adminListings"><div class="admin-empty">Загружаем объекты…</div></div></section>
+      <section class="admin-panel" id="panel-leads"><div class="admin-panel-heading"><div><h2>Заявки от покупателей</h2><p>Все обращения с публичной страницы сайта.</p></div><button class="outline-button" type="button" id="refreshLeadsButton">↻ Обновить</button></div><div id="adminLeads"><div class="admin-empty">Загружаем заявки…</div></div></section>
+      <section class="admin-panel" id="panel-staff"><div class="admin-panel-heading"><div><h2>Команда</h2><p>Добавлять учётные записи может только администратор.</p></div></div><div id="staffAccessNote" class="admin-note hidden">У вас нет прав администратора для управления учётными записями.</div><div class="admin-form-card" id="createStaffCard"><h3>Добавить сотрудника</h3><form id="createStaffForm"><div class="user-create-grid"><label class="admin-field">Логин<input name="username" required minlength="3" placeholder="например, manager01"></label><label class="admin-field">Пароль<input type="password" name="password" required minlength="10" placeholder="От 10 символов"></label><label class="admin-field">Роль<select name="role"><option value="staff">Сотрудник</option><option value="admin">Администратор</option></select></label><button class="button button-dark" type="submit">Создать доступ</button></div><p class="admin-error hidden" id="staffFormError"></p><p class="upload-hint">Логин — латинские буквы, цифры, точка, дефис или подчёркивание. Не используйте общий пароль для всех сотрудников.</p></form></div><div class="admin-table-card" style="margin-top:15px"><table class="admin-table"><thead><tr><th>Логин</th><th>Роль</th><th>Действия</th></tr></thead><tbody id="staffTable"><tr><td colspan="3">Загружаем учётные записи…</td></tr></tbody></table></div></section>
+    </section>
+  </main>
+
+  <div class="modal-backdrop hidden" id="objectFormBackdrop" role="dialog" aria-modal="true" aria-labelledby="objectFormTitle"><div class="modal modal-wide" style="padding:26px;max-width:900px"><button class="modal-close" type="button" id="closeObjectForm" aria-label="Закрыть">×</button><span class="mini-overline">КАРТОЧКА ОБЪЕКТА</span><h2 id="objectFormTitle" style="font-size:27px;letter-spacing:-.055em;margin:8px 0 5px">Добавить объект</h2><p style="font-size:12px;color:#849087;margin-bottom:18px">Поля со звёздочкой обязательны. Проверьте данные перед публикацией.</p><form id="objectForm" enctype="multipart/form-data"><input type="hidden" name="currentPhotos" id="currentPhotos"><div class="admin-form-grid">
+    <label class="admin-field span-2">Название объекта *<input name="title" required maxlength="180" placeholder="Например, одноэтажный дом с участком"></label>
+    <label class="admin-field">Статус<select name="status"><option value="published">Опубликовать</option><option value="draft">Сохранить как черновик</option></select></label>
+    <label class="admin-field">Цена, ₽ *<input name="price" type="number" required min="1" step="1" placeholder="6500000"></label>
+    <label class="admin-field">Общая площадь, м² *<input name="totalArea" type="number" required min="1" step="0.1" placeholder="110"></label>
+    <label class="admin-field">Площадь участка, соток<input name="landArea" type="number" min="0" step="0.1" placeholder="8"></label>
+    <label class="admin-field">Материал дома *<select name="material" required><option value="">Выберите материал</option><option>Газобетон</option><option>Кирпич</option><option>Брус</option><option>Бревно</option><option>Каркасный</option><option>Пеноблок</option><option>Другое</option></select></label>
+    <label class="admin-field">Этажей в доме<input name="floors" type="number" min="1" max="10" value="1"></label>
+    <label class="admin-field">Год постройки<input name="year" type="number" min="1800" max="2200" placeholder="2025"></label>
+    <label class="admin-field">Тип объекта<select name="ownerType"><option value="builder">Объект нашей бригады</option><option value="partner">Объект партнёра / собственника</option></select></label>
+    <label class="admin-field span-2">Адрес / расположение *<input name="address" required maxlength="300" placeholder="Кызыл, улица или район"></label>
+    <label class="admin-field">Район / ориентир<input name="district" maxlength="120" placeholder="Кызыл"></label>
+    <label class="admin-field span-3">Описание объекта<textarea name="description" rows="5" maxlength="10000" placeholder="Планировка, состояние, отделка, особенности участка, условия просмотра…"></textarea></label>
+    <div class="span-3"><label class="admin-field" style="margin-bottom:7px">Коммуникации и их характеристики</label><p class="upload-hint" style="margin:0 0 9px">Добавьте строку для каждого подключения и опишите его состояние, тип или другие важные детали.</p><div class="comms-editor" id="commsEditor"></div><button class="small-action" type="button" id="addCommunication">＋ Добавить коммуникацию</button></div>
+    <div class="span-3"><label class="admin-field" style="margin-top:15px">Фотографии объекта<input name="photos" type="file" id="photoFiles" accept="image/jpeg,image/png,image/webp,image/avif" multiple></label><p class="upload-hint">До 8 фото за один раз, JPG / PNG / WEBP / AVIF, до 8 МБ каждое. На сервере будет храниться копия файла.</p><div class="photo-preview-grid" id="photoPreviewGrid"></div></div>
+    <div class="span-3"><label class="admin-field" style="margin-bottom:6px">Точка на карте</label><p class="upload-hint" style="margin:0 0 10px">Укажите координаты объекта, чтобы поставить метку. Откройте Яндекс Карты, найдите адрес и скопируйте координаты выбранной точки. Если их не указать, карта будет показывать центр Кызыла.</p><div class="admin-form-grid" style="padding:0"><label class="admin-field">Широта (latitude)<input name="lat" type="number" step="any" min="-90" max="90" placeholder="51.7191"></label><label class="admin-field">Долгота (longitude)<input name="lon" type="number" step="any" min="-180" max="180" placeholder="94.4378"></label><div style="display:flex;align-items:center;padding-bottom:14px"><a id="mapHelpLink" href="https://yandex.ru/maps/?text=%D0%9A%D1%8B%D0%B7%D1%8B%D0%BB" target="_blank" rel="noopener" class="text-button">Найти точку на Яндекс Картах ↗</a></div></div></div>
+    </div><div class="admin-error hidden" id="objectFormError"></div><div class="admin-form-footer"><button class="cancel-button" type="button" id="cancelObjectForm">Отмена</button><button class="button button-dark" type="submit" id="saveObjectButton">Сохранить объект <span>↗</span></button></div></form></div></div>
+
+  <div class="toast" id="adminToast" role="status" aria-live="polite"></div>
+  <script src="/admin.js" defer></script>
+</body>
+</html>
